@@ -12,14 +12,16 @@ $navbar-default-bg: #ff3300;
   font-weight: bold;
 }
 
-.container {
-  margin: 0 auto;
+.article-actions {
+  border-top: 1px solid #eaeaea;
+  padding-top: 5px;
+}
+
+.description {
+  margin-top: 0;
 }
 
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
   color: #777;
 }
 
