@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    byebug
     @article = Article.new(article_params)
     if @article.save
       flash[:success] = 'Article was successfully created'
