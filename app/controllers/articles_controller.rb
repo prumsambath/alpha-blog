@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy]
   before_action :require_user, except: [:show, :index]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
 
   def new
     @article = Article.new
@@ -55,6 +56,13 @@ class ArticlesController < ApplicationController
     def require_same_user
       unless current_user.admin? || current_user == @article.user
         flash[:danger] = 'You can only edit or delete your own articles'
+        redirect_to root_path
+      end
+    end
+
+    def require_admin
+      if logged_in? && !current_user.admin?
+        flash[:danger] = 'Only admin user can perform that action'
         redirect_to root_path
       end
     end
